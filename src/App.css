@@ -1,38 +1,111 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-weight: 600;
+  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-spacing:0;
+  margin-top: 30px;
+}
+thead {
+  background-color: #3f87a6;
+}
+thead tr:hover {
+  background-color: #3f87a6;
+}
+tbody {
+  width: 100%;
+  background-color: #e4f0f5;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+thead tr td {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+tr {
+  width: 100%;
+}
+tr:hover {
+  background: rgb(181, 202, 210);
+}
+tr:hover td {
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+th,
+td {
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 17px;
+  color: black;
+  cursor: pointer;
+  border-bottom: solid;
+  border-bottom-color: black;
+  border-width: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sort-button {
+  background-color: transparent;
+  border: none;
+  padding: 5px 10px;
+  margin: 0;
+  line-height: 1;
+  font-size: 15px;
+  color: black;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.05s ease-out;
+}
+
+.sort-reverse {
+  transform: rotate(180deg);
+}
+.filterWrapper {
+  display: flex;
+  flex-direction: row;
+  color: #A0AEC0;
+  justify-content: center;
+}
+.filterButton {
+  font-size: 2vmin;
+  padding: .5em 1em;
+  background: #fff;
+  color: #4A5568;
+  border: 0px solid #A0AEC0;
+  margin: .1em;
+  transition: background .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease;
+  box-shadow: 0 0 0 #BEE3F8;
+  transform: translateY(0);
+}
+.activeFilterButton {
+  color: white;
+  background: #3f87a6;
+}
+
+.filterWrapper:hover button{
+  color: #A0AEC0;
+}
+
+.filterWrapper:hover button:hover{
+  background: #3f87a6;
+  color: #fff;
+  box-shadow: 0 0 0.8em 0 rgb(83, 160, 177);
+  transform: translateY(-.2em);
+}
+
+.infoRow {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
 }

@@ -1,8 +1,8 @@
 import React from "react";
 
-import {ORDER_DESC} from "../constants/constants";
+import {ORDER_DESC} from "../../constants/constants";
 
-import data from "../default.json";
+import data from "../../default.json";
 
 type Data = typeof data;
 type SortKeys = keyof Data[0];

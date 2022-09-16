@@ -1,4 +1,4 @@
-import {Profile} from "../types/propTypes";
+import {Profile} from "../../types/propTypes";
 
 export const sortData = ({
                                    tableData,

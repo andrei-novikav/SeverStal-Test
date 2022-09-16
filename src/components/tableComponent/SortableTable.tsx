@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState, useMemo } from "react";
 import SortButton from "./SortButton";
 import {MemoizedTableRow} from "./TableRow";
 
@@ -8,9 +8,9 @@ import {
     ORDER_ASC,
     ORDER_DESC,
     PROFILE_BALANCE
-} from "../constants/constants";
+} from "../../constants/constants";
 
-import data from "../default.json";
+import data from "../../default.json";
 
 type Data = typeof data;
 type SortKeys = keyof Data[0];
@@ -23,7 +23,7 @@ const SortableTable = ({data, activeFilter, headers}
     const [sortKey, setSortKey] = useState<SortKeys>(PROFILE_BALANCE);
     const [sortOrder, setSortOrder] = useState<string>(ORDER_ASC);
 
-    const sortedData = useCallback(
+    const sortedData = useMemo(
         () => sortData({
             tableData: data,
             sortKey,
@@ -56,7 +56,7 @@ const SortableTable = ({data, activeFilter, headers}
                 </tr>
             </thead>
             <tbody>
-            {sortedData().map((person) => <MemoizedTableRow person={person}/>)}
+            {sortedData.map((person) => <MemoizedTableRow person={person}/>)}
             </tbody>
         </table>
     );

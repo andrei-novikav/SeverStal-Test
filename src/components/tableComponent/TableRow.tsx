@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Profile} from "../types/propTypes";
+import {Profile} from "../../types/propTypes";
 
 const TableRow = ({person}:{person: Profile}) => {
     const [isExpand, setExpand] = useState<boolean>(false);

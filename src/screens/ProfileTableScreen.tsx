@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import SortableTable from "../components/SortableTable";
+import SortableTable from "../components/tableComponent/SortableTable";
 import data from "../default.json";
 import ButtonGroup from "../components/ButtonGroup";
 import {

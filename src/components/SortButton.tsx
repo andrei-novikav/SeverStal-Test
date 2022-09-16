@@ -1,26 +1,26 @@
-import React, {MouseEventHandler} from "react";
+import React from "react";
+
+import {ORDER_DESC} from "../constants/constants";
+
 import data from "../default.json";
 
 type Data = typeof data;
 type SortKeys = keyof Data[0];
-type SortOrder = "ascn" | "desc";
 
 const SortButton = ({
                         sortOrder,
                         columnKey,
                         sortKey,
-                        onClick,
                     }: {
-    sortOrder: SortOrder;
+    sortOrder: string;
     columnKey: SortKeys;
     sortKey: SortKeys;
-    onClick: MouseEventHandler<HTMLButtonElement>;
 }) => {
+    console.log(sortKey);
     return (
         <button
-            onClick={onClick}
             className={`${
-                sortKey === columnKey && sortOrder === "desc"
+                sortKey === columnKey && sortOrder === ORDER_DESC
                     ? "sort-button sort-reverse"
                     : "sort-button"
             }`}

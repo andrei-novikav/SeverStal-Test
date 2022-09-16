@@ -10,7 +10,7 @@ type Props = {
     setActiveFilter: (value: string) => void,
 }
 
-const Buttons = ({ setActiveFilter, activeFilter, menuItems }: Props) => {
+const ButtonGroup = ({ setActiveFilter, activeFilter, menuItems }: Props) => {
     return (
         <>
             <div className="filterWrapper">
@@ -30,4 +30,4 @@ const Buttons = ({ setActiveFilter, activeFilter, menuItems }: Props) => {
     );
 };
 
-export default Buttons;
+export default ButtonGroup;

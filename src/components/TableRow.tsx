@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import {Profile} from "./helper";
+import {Profile} from "../types/propTypes";
 
 const TableRow = ({person}:{person: Profile}) => {
     const [isExpand, setExpand] = useState<boolean>(false);
     return (
         <React.Fragment>
-                <tr key={person.id} onClick={() => setExpand(!isExpand)}>
+                <tr onClick={() => setExpand(!isExpand)}>
                     <td>{person.id}</td>
                     <td>{person.parentId}</td>
                     <td>{person.isActive ? "Active" : "Inactive"}</td>
@@ -15,12 +15,12 @@ const TableRow = ({person}:{person: Profile}) => {
                 </tr>
                 {isExpand && <tr>
                         <td colSpan={6}>
-                            <div className="infoRow">
+                            <section className="infoRow">
                                 <p>
                                     {`User ${person.name} is an ${person.isActive ? "Active" : "Inactive"} 
                                     user with a balance of ${person.balance}. You can contact him via email: ${person.email}`}
                                 </p>
-                            </div>
+                            </section>
                         </td>
                 </tr>
                 }

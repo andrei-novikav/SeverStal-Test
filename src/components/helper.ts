@@ -1,11 +1,4 @@
-export type Profile = {
-    id: number,
-    parentId: number,
-    isActive: boolean,
-    balance: string,
-    name: string,
-    email: string,
-}
+import {Profile} from "../types/propTypes";
 
 export const sortData = ({
                                    tableData,
@@ -19,24 +12,19 @@ export const sortData = ({
     activeFilter: string;
 }) => {
     if (!sortKey) return tableData;
-    const sortedData = tableData
+    const filteredData = tableData
         .filter(el => {
             if (activeFilter === "all") return el
             if (activeFilter === "active")
                 return el.isActive
             else return !(el.isActive)
         })
+    const sortedData = filteredData
         .sort((current, next) => {
         return current[sortKey] > next[sortKey] ? 1 : -1;
     });
     if (reverse) {
-        return sortedData
-            .filter(el => {
-                if (activeFilter === "all") return el
-                if (activeFilter === "active")
-                    return el.isActive
-                else return !(el.isActive)
-            })
+        return filteredData
             .reverse();
     }
     return sortedData;

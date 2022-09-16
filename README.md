@@ -15,6 +15,10 @@
 
 </details>
 
+## Preview
+
+[Click](https://lambent-gumdrop-35aedb.netlify.app)
+
 ## Prerequisites
 - node version 12 - 16
 - npm

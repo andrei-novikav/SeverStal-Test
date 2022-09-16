@@ -16,7 +16,6 @@ const SortButton = ({
     columnKey: SortKeys;
     sortKey: SortKeys;
 }) => {
-    console.log(sortKey);
     return (
         <button
             className={`${

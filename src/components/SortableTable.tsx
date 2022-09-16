@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import SortButton from "./SortButton";
-import TableRow from "./TableRow";
+import {MemoizedTableRow} from "./TableRow";
 
 import {sortData} from "./helper";
 
@@ -56,7 +56,7 @@ const SortableTable = ({data, activeFilter, headers}
                 </tr>
             </thead>
             <tbody>
-            {sortedData().map((person) => <TableRow person={person}/>)}
+            {sortedData().map((person) => <MemoizedTableRow person={person}/>)}
             </tbody>
         </table>
     );

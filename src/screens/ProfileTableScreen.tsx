@@ -14,32 +14,33 @@ import {
 type Data = typeof data;
 type SortKeys = keyof Data[0];
 
+const menuItems = [
+    {
+        label: "All",
+        value: FILTER_ALL
+    },
+    {
+        label: "Active",
+        value: FILTER_ACTIVE,
+    },
+    {
+        label: "Inactive",
+        value: FILTER_INACTIVE
+    },
+];
+
+const headers: { key: SortKeys; label: string, isSortActive: boolean}[] = [
+    { key: PROFILE_ID, label: "ID", isSortActive: false },
+    { key: PROFILE_PARENT_ID, label: "Parent ID", isSortActive: false },
+    { key: PROFILE_IS_ACTIVE, label: "Active", isSortActive: false },
+    { key: PROFILE_BALANCE, label: "Balance", isSortActive: true },
+    { key: PROFILE_NAME, label: "Name", isSortActive: false },
+    { key: PROFILE_EMAIL, label: "Email", isSortActive: true },
+];
+
 const ProfileTableScreen = () => {
     const [activeFilter, setActiveFilter] = useState<string>(FILTER_ALL)
 
-    const menuItems = [
-        {
-            label: "All",
-            value: FILTER_ALL
-        },
-        {
-            label: "Active",
-            value: FILTER_ACTIVE,
-        },
-        {
-            label: "Inactive",
-            value: FILTER_INACTIVE
-        },
-    ];
-
-    const headers: { key: SortKeys; label: string, isSortActive: boolean}[] = [
-        { key: PROFILE_ID, label: "ID", isSortActive: false },
-        { key: PROFILE_PARENT_ID, label: "Parent ID", isSortActive: false },
-        { key: PROFILE_IS_ACTIVE, label: "Active", isSortActive: false },
-        { key: PROFILE_BALANCE, label: "Balance", isSortActive: true },
-        { key: PROFILE_NAME, label: "Name", isSortActive: false },
-        { key: PROFILE_EMAIL, label: "Email", isSortActive: true },
-    ];
 
     return (
         <div>

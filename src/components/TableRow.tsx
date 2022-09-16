@@ -27,4 +27,4 @@ const TableRow = ({person}:{person: Profile}) => {
         </React.Fragment>
     );
 }
-export default TableRow
+export const MemoizedTableRow = React.memo(TableRow)

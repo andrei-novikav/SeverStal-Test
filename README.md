@@ -17,7 +17,7 @@
 
 ## Prerequisites
 - node version 12 - 16
-- yarn
+- npm
 
 ## Project setup
 ```

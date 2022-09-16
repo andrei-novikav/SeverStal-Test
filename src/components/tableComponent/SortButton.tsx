@@ -16,12 +16,11 @@ const SortButton = ({
     columnKey: SortKeys;
     sortKey: SortKeys;
 }) => {
+    const isOrderDesc = sortKey === columnKey && sortOrder === ORDER_DESC
     return (
         <button
-            className={`${
-                sortKey === columnKey && sortOrder === ORDER_DESC
-                    ? "sort-button sort-reverse"
-                    : "sort-button"
+            className={`sort-button ${
+                isOrderDesc && "sort-reverse"
             }`}
         >
             ▲

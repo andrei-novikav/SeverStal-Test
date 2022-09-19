@@ -1,26 +1,23 @@
 import React, {useState} from "react";
-import {Profile} from "../../types/propTypes";
+import {GroupProfile} from "../../types/propTypes";
+import SortableTable from "./SortableTable";
+import {FILTER_ALL, headers} from "../../constants/constants";
 
-const TableRow = ({person}:{person: Profile}) => {
+const TableRow = ({person}:{person: GroupProfile}) => {
     const [isExpand, setExpand] = useState<boolean>(false);
     return (
         <React.Fragment>
-                <tr onClick={() => setExpand(!isExpand)}>
+                <tr className={"tableRow"} onClick={() => setExpand(!isExpand)}>
                     <td>{person.id}</td>
-                    <td>{person.parentId}</td>
                     <td>{person.isActive ? "Active" : "Inactive"}</td>
                     <td>{person.balance}</td>
                     <td>{person.name}</td>
                     <td>{person.email}</td>
                 </tr>
-                {isExpand && <tr>
-                        <td colSpan={6}>
-                            <section className="infoRow">
-                                <p>
-                                    {`User ${person.name} is an ${person.isActive ? "Active" : "Inactive"} 
-                                    user with a balance of ${person.balance}. You can contact him via email: ${person.email}`}
-                                </p>
-                            </section>
+                {isExpand && person.children && person.children.some(el => el) && <tr>
+                        <td colSpan={5} align={"right"}>
+                                <SortableTable
+                                    data={person.children} activeFilter={FILTER_ALL} headers={headers} tableStyle={"childTable"}/>
                         </td>
                 </tr>
                 }

@@ -1,8 +1,8 @@
 import { useState, useMemo } from "react";
 import SortButton from "./SortButton";
-import {MemoizedTableRow} from "./TableRow";
+import { MemoizedTableRow } from "./TableRow";
 
-import {sortData} from "./helper";
+import { sortData } from "./helper";
 
 import {
     ORDER_ASC,
@@ -10,16 +10,14 @@ import {
     PROFILE_BALANCE
 } from "../../constants/constants";
 
-import data from "../../default.json";
+import {GroupProfiles, SortKeys} from "../../types/propTypes";
 
-type Data = typeof data;
-type SortKeys = keyof Data[0];
-
-const SortableTable = ({data, activeFilter, headers}
+const SortableTable = ({data, activeFilter, headers, tableStyle}
                            :{
-                               data: Data,
-                               activeFilter: string,
-                               headers: { key: SortKeys; label: string, isSortActive: boolean}[] }) => {
+                                data: GroupProfiles,
+                                activeFilter: string,
+                                headers: { key: SortKeys; label: string, isSortActive: boolean}[]
+                                tableStyle: string, }) => {
     const [sortKey, setSortKey] = useState<SortKeys>(PROFILE_BALANCE);
     const [sortOrder, setSortOrder] = useState<string>(ORDER_ASC);
 
@@ -39,9 +37,9 @@ const SortableTable = ({data, activeFilter, headers}
     }
 
     return (
-        <table>
+        <table className={tableStyle}>
             <thead>
-                <tr>
+                <tr className={"tableRow"}>
                     {headers.map((row) => {
                         return (
                             <td key={row.key} onClick={() => row.isSortActive && changeSort(row.key)}>
@@ -56,7 +54,7 @@ const SortableTable = ({data, activeFilter, headers}
                 </tr>
             </thead>
             <tbody>
-            {sortedData.map((person) => <MemoizedTableRow person={person}/>)}
+            {sortedData.map((person) => <MemoizedTableRow key={person.id} person={person}/>)}
             </tbody>
         </table>
     );

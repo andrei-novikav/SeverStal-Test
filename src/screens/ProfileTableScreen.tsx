@@ -1,18 +1,15 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import SortableTable from "../components/tableComponent/SortableTable";
 import data from "../default.json";
 import ButtonGroup from "../components/ButtonGroup";
 import {
     FILTER_ACTIVE,
     FILTER_ALL,
-    FILTER_INACTIVE, PROFILE_BALANCE, PROFILE_EMAIL,
-    PROFILE_ID,
-    PROFILE_IS_ACTIVE, PROFILE_NAME,
-    PROFILE_PARENT_ID
+    FILTER_INACTIVE
 } from "../constants/constants";
-
-type Data = typeof data;
-type SortKeys = keyof Data[0];
+import {headers} from "../constants/constants";
+import {groupData} from "../components/tableComponent/helper";
+import {GroupProfiles} from "../types/propTypes";
 
 const menuItems = [
     {
@@ -29,18 +26,15 @@ const menuItems = [
     },
 ];
 
-const headers: { key: SortKeys; label: string, isSortActive: boolean}[] = [
-    { key: PROFILE_ID, label: "ID", isSortActive: false },
-    { key: PROFILE_PARENT_ID, label: "Parent ID", isSortActive: false },
-    { key: PROFILE_IS_ACTIVE, label: "Active", isSortActive: false },
-    { key: PROFILE_BALANCE, label: "Balance", isSortActive: true },
-    { key: PROFILE_NAME, label: "Name", isSortActive: false },
-    { key: PROFILE_EMAIL, label: "Email", isSortActive: true },
-];
-
 const ProfileTableScreen = () => {
     const [activeFilter, setActiveFilter] = useState<string>(FILTER_ALL)
+    const [groupProfiles, setGroupProfile] = useState<GroupProfiles>(data);
 
+    useEffect(() => {
+        const groupedData = groupData(data, 0);
+        //data grouped initially to reduce rendering operations in subsequent components
+        setGroupProfile(groupedData);
+    },[])
 
     return (
         <div>
@@ -50,9 +44,10 @@ const ProfileTableScreen = () => {
                 menuItems={menuItems}
             />
             <SortableTable
-                data={data}
+                data={groupProfiles}
                 activeFilter={activeFilter}
                 headers={headers}
+                tableStyle={"rootTable"}
             />
         </div>
     )

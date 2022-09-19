@@ -1,11 +1,7 @@
 import React from "react";
 
 import {ORDER_DESC} from "../../constants/constants";
-
-import data from "../../default.json";
-
-type Data = typeof data;
-type SortKeys = keyof Data[0];
+import {SortKeys} from "../../types/propTypes";
 
 const SortButton = ({
                         sortOrder,

@@ -30,14 +30,16 @@ export const sortData = ({
             else return !(el.isActive)
         })
     const sortedData = filteredData
-        .sort((current, next) => (
-            current[sortKey] > next[sortKey] ? -1 : 1
-        )
+        .sort((current, next) => {
+                if (current[sortKey] > next[sortKey]) {
+                    return reverse ? 1 : -1
+                }
+                if (current[sortKey] < next[sortKey]) {
+                    return reverse ? -1 : 1;
+                }
+                return 0
+        }
         // Out of respect for IE explorer
     );
-    if (reverse) {
-        return filteredData
-            .reverse();
-    }
     return sortedData;
 }
